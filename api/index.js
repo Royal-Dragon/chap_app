@@ -42,7 +42,7 @@ async function getUserData(req){
   
 }
 
-app.get('/test', (req, res) => {
+app.get('/api/test', (req, res) => {
   res.json('test ok');
 });
 
@@ -58,12 +58,12 @@ const msgs = await Message.find({
 res.json(msgs)
 })
 
-app.get('/people', async(req,res) =>{
+app.get('/api/people', async(req,res) =>{
   res.json(await User.find({},{_id:1,username:1}))
 })
 
 
-app.get('/profile', (req, res) => {
+app.get('/api/profile', (req, res) => {
   const token = req.cookies?.token;
   if (token) {
     jwt.verify(token, jwt_secret, {}, (err, userData) => {
@@ -76,7 +76,7 @@ app.get('/profile', (req, res) => {
 })
 
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { username, password } = req.body
   const existingUser = await User.findOne({ username });
   if (existingUser) {
@@ -100,12 +100,12 @@ app.post('/login', async (req, res) => {
   console.log('page created')
 })
 
-app.post('/logout',(req,res)=> {
+app.post('/api/logout',(req,res)=> {
   res.cookie('token','', { sameSite: 'none', secure: true }).json('logged out');
 })
 
 
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
   try {
 
