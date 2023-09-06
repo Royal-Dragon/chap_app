@@ -4,7 +4,7 @@ import { UserContext, UserContextProvider } from './UserContext';
 import Routes from './Routes';
 import { useContext } from 'react';
 function App() {
-      axios.defaults.baseURL = 'http://localhost:4040';
+      axios.defaults.baseURL = 'http://localhost:4040/api/';
       axios.defaults.withCredentials = true;
       return (
 
