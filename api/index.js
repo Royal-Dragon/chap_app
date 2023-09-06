@@ -46,7 +46,7 @@ app.get('/api/test', (req, res) => {
   res.json('test ok');
 });
 
-app.get('/messages/:userId',async (req,res)=>{
+app.get('/api/messages/:userId',async (req,res)=>{
 const {userId}= (req.params);
 const UserData = await getUserData(req);
 const OurId = UserData.userId
